@@ -21,13 +21,16 @@ var endPoint = 0;
 var theMusic;
 var outPath = "";
 exports.mainScene.use((ctx, next) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b;
+    var _a;
     theMusic = (_a = ctx.msg) === null || _a === void 0 ? void 0 : _a.audio;
     const fileId = theMusic === null || theMusic === void 0 ? void 0 : theMusic.file_id;
     const file = yield ctx.getFile();
-    const path = yield file.download(`./media/${(_b = ctx.chat) === null || _b === void 0 ? void 0 : _b.id}`);
+    const path = yield file.download();
     thePath = path;
-    outPath = thePath.slice(0, thePath.length) + "-output.mp3";
+    outPath = thePath.slice(0, thePath.length - 8) + "output.mp3";
+    // const path = await file.download(`./media/${ctx.chat?.id}`)
+    // thePath = path
+    // outPath = thePath.slice(0, thePath.length) + "-output.mp3"
     console.log("File saved at ", path);
     console.log(outPath);
     console.log("entering to the main scene");
@@ -65,7 +68,7 @@ exports.mainScene.wait().on("message:text", (ctx) => __awaiter(void 0, void 0, v
         else {
             console.log(thePath, startPoint, endPoint);
             console.log(outPath);
-            yield ctx.reply("Cutting the song");
+            yield ctx.reply("Musiqani kesmoqdaman, iltimos biroz kuting...");
             var theAudio = yield MP3.cut({
                 src: thePath,
                 target: outPath,
@@ -73,8 +76,8 @@ exports.mainScene.wait().on("message:text", (ctx) => __awaiter(void 0, void 0, v
                 end: endPoint
             });
             yield ctx.replyWithAudio(new grammy_1.InputFile(outPath));
-            fs.unlinkSync(thePath);
-            fs.unlinkSync(outPath);
+            // fs.unlinkSync(thePath)
+            // fs.unlinkSync(outPath)
             ctx.scene.exit();
         }
     }
