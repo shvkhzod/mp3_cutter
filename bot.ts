@@ -34,8 +34,15 @@ bot.command("start", async (ctx) => {
 })
 
 bot.on(":audio", async (ctx) => {
-    await ctx.reply("Audio yuklanmoqda...")
-    await ctx.scenes.enter("main")
+    console.log(ctx.message?.audio.mime_type)
+    if(ctx.message?.audio.mime_type != "audio/mpeg") {
+        await ctx.reply("Iltimos mp3 formatdagi musiqalarni yuboring")
+    } else if(ctx.message?.audio.file_size! > 12000000){
+        await ctx.reply("Audio hajmi katta ekan")
+    }else {
+        await ctx.reply("Audio yuklanmoqda...")
+        await ctx.scenes.enter("main")
+    }
     
 })
 // Handle other messages.

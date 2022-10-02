@@ -23,8 +23,18 @@ bot.command("start", (ctx) => __awaiter(void 0, void 0, void 0, function* () {
     yield ctx.reply("Bu bot orqali siz mp3 musiqani kerakligi joyini kesishingiz mumkin. Boshlash uchun menga musiqani tashlang ");
 }));
 bot.on(":audio", (ctx) => __awaiter(void 0, void 0, void 0, function* () {
-    yield ctx.reply("Audio yuklanmoqda...");
-    yield ctx.scenes.enter("main");
+    var _a, _b, _c;
+    console.log((_a = ctx.message) === null || _a === void 0 ? void 0 : _a.audio.mime_type);
+    if (((_b = ctx.message) === null || _b === void 0 ? void 0 : _b.audio.mime_type) != "audio/mpeg") {
+        yield ctx.reply("Iltimos mp3 formatdagi musiqalarni yuboring");
+    }
+    else if (((_c = ctx.message) === null || _c === void 0 ? void 0 : _c.audio.file_size) > 12000000) {
+        yield ctx.reply("Audio hajmi katta ekan");
+    }
+    else {
+        yield ctx.reply("Audio yuklanmoqda...");
+        yield ctx.scenes.enter("main");
+    }
 }));
 // Handle other messages.
 bot.use(scenes_1.scenes);
