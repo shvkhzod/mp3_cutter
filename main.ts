@@ -46,7 +46,7 @@ mainScene.do( async (ctx) => {
    
 })
 
-mainScene.wait().on("message:text", async(ctx, next) => {
+mainScene.wait().on("message:text", async(ctx) => {
     if(ctx.message.text.includes(":") || ctx.message.text.length == 5) {
         const splitted = ctx.message.text.split(":")
         const mins = parseInt(splitted[0])
@@ -55,7 +55,7 @@ mainScene.wait().on("message:text", async(ctx, next) => {
         console.log(total)
         startPoint = total
         await ctx.reply("Tugatish nuqtasini kiriting, masalan 02:37")
-        return next()
+        ctx.scene.resume()
         
     } else {
         await ctx.reply("Xato format,boshlang'ich nuqtani qaytadan kiriting, masalan 00:40 yoki 01:56")
