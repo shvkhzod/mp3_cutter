@@ -55,8 +55,8 @@ mainScene.wait().on("message:text", async(ctx) => {
         console.log(total)
         startPoint = total
         await ctx.reply("Tugatish nuqtasini kiriting, masalan 02:37")
-        ctx.scene.resume()
         
+        ctx.scene.resume()
     } else {
         await ctx.reply("Xato format,boshlang'ich nuqtani qaytadan kiriting, masalan 00:40 yoki 01:56")
     }
