@@ -34,17 +34,17 @@ mainScene.use(async(ctx, next)=> {
    
 
     console.log("entering to the main scene")
-    
+    await ctx.reply(`Boshlang'ich nuqtasini kiriting, masalan 02:37`)
     return next()
 })
 
 
 
 
-mainScene.do( async (ctx) => {
-    await ctx.reply(`Boshlang'ich nuqtasini kiriting, masalan 02:37`)
+// mainScene.do( async (ctx) => {
+//     await ctx.reply(`Boshlang'ich nuqtasini kiriting, masalan 02:37`)
    
-})
+// })
 
 mainScene.wait().on("message:text", async(ctx) => {
     if(ctx.message.text.includes(":") || ctx.message.text.length == 5) {
