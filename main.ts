@@ -46,7 +46,7 @@ mainScene.do( async (ctx) => {
    
 })
 
-mainScene.on("message:text", async(ctx, next) => {
+mainScene.wait().on("message:text", async(ctx, next) => {
     if(ctx.message.text.includes(":") || ctx.message.text.length == 5) {
         const splitted = ctx.message.text.split(":")
         const mins = parseInt(splitted[0])
@@ -65,7 +65,7 @@ mainScene.on("message:text", async(ctx, next) => {
 
    
 
-mainScene.on("message:text", async(ctx) => {
+mainScene.wait().on("message:text", async(ctx) => {
     if(ctx.message.text.includes(":") || ctx.message.text.length == 5) {
         const splitted = ctx.message.text.split(":")
         const mins = parseInt(splitted[0])
