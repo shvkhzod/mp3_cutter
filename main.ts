@@ -1,9 +1,7 @@
-import { downloadFile } from "@grammyjs/files/out/deps.node"
+
 import { InputFile } from "grammy"
 import {Scene} from "grammy-scenes"
 import { Audio } from "grammy/out/types.node"
-import { URL } from "url"
-import axios from "axios"
 const fs = require("fs")
 
 import { BotContext } from "./bot"
@@ -91,8 +89,8 @@ mainScene.wait().on("message:text", async(ctx) => {
                 
             })
             await ctx.replyWithAudio(new InputFile(outPath))
-            // fs.unlinkSync(thePath)
-            // fs.unlinkSync(outPath)
+            fs.unlinkSync(thePath)
+            fs.unlinkSync(outPath)
             ctx.scene.exit()
         }
     } else {

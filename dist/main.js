@@ -76,8 +76,8 @@ exports.mainScene.wait().on("message:text", (ctx) => __awaiter(void 0, void 0, v
                 end: endPoint
             });
             yield ctx.replyWithAudio(new grammy_1.InputFile(outPath));
-            // fs.unlinkSync(thePath)
-            // fs.unlinkSync(outPath)
+            fs.unlinkSync(thePath);
+            fs.unlinkSync(outPath);
             ctx.scene.exit();
         }
     }
