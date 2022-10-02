@@ -15,7 +15,7 @@ type SessionData = ScenesSessionFlavor & {
 export type BotContext = SessionFlavor<SessionData> & ScenesFlavor & FileFlavor<Context>;
 
 // Create an instance of the `Bot` class and pass your authentication token to it.
-const bot = new Bot<BotContext>("5776539701:AAG02oyoncsPGAnJO4JPJ1C0Ee2jr8yi3pI"); // <-- put your authentication token between the ""
+const bot = new Bot<BotContext>("5776539701:AAF1aphHsk-AoADYx63GW1s9rKbsfbuIh7Y"); // <-- put your authentication token between the ""
 
 bot.api.config.use(hydrateFiles(bot.token))
 

@@ -13,7 +13,7 @@ const grammy_1 = require("grammy");
 const scenes_1 = require("./scenes");
 const files_1 = require("@grammyjs/files");
 // Create an instance of the `Bot` class and pass your authentication token to it.
-const bot = new grammy_1.Bot("5776539701:AAG02oyoncsPGAnJO4JPJ1C0Ee2jr8yi3pI"); // <-- put your authentication token between the ""
+const bot = new grammy_1.Bot("5776539701:AAF1aphHsk-AoADYx63GW1s9rKbsfbuIh7Y"); // <-- put your authentication token between the ""
 bot.api.config.use((0, files_1.hydrateFiles)(bot.token));
 bot.use((0, grammy_1.session)({
     initial: () => ({})
