@@ -1,4 +1,4 @@
-import { Bot, Context, session, SessionFlavor } from "grammy";
+import { Bot, Context, MemorySessionStorage, session, SessionFlavor } from "grammy";
 import {ScenesSessionFlavor, ScenesFlavor} from "grammy-scenes"
 import { scenes } from "./scenes";
 import { FileFlavor, hydrateFiles } from "@grammyjs/files";
@@ -22,7 +22,7 @@ bot.api.config.use(hydrateFiles(bot.token))
 
 bot.use(
     session({
-        initial: () => ({})
+        initial: () => ({}),
     })
 )
 bot.use(scenes.manager())
