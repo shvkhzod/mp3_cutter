@@ -46,9 +46,9 @@ mainScene.do( async (ctx) => {
    
 })
 
-mainScene.use(async(ctx, next) => {
-    if(ctx.message?.text!.includes(":") || ctx.message?.text!.length == 5) {
-        const splitted = ctx.message?.text!.split(":")
+mainScene.on("message:text", async(ctx, next) => {
+    if(ctx.message.text.includes(":") || ctx.message.text.length == 5) {
+        const splitted = ctx.message.text.split(":")
         const mins = parseInt(splitted[0])
         const seconds = parseInt(splitted[1])
         const total = 60 * mins + seconds
@@ -65,9 +65,9 @@ mainScene.use(async(ctx, next) => {
 
    
 
-mainScene.use(async(ctx) => {
-    if(ctx.message?.text!.includes(":") || ctx.message?.text!.length == 5) {
-        const splitted = ctx.message?.text!.split(":")
+mainScene.on("message:text", async(ctx) => {
+    if(ctx.message.text.includes(":") || ctx.message.text.length == 5) {
+        const splitted = ctx.message.text.split(":")
         const mins = parseInt(splitted[0])
         const seconds = parseInt(splitted[1])
         const total = 60 * mins + seconds
@@ -75,7 +75,7 @@ mainScene.use(async(ctx) => {
     
         if(endPoint<startPoint) {
             console.log("Invalid")
-            await ctx.reply("Tugatish nuqtasi boshlash nuqtasidan katta bo'lishi kerak, qaytadan tugatish nuqtasini kiriting")
+            await ctx.reply("Tugatish nuqtasi boshlash nuqtasidan kichik bo'lishi kerak, qaytadan tugatish nuqtasini kiriting")
         } else {
             console.log(thePath, startPoint, endPoint)
             console.log(outPath)
