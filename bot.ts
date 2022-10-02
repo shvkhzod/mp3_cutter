@@ -30,11 +30,15 @@ bot.use(scenes.manager())
 
 bot.command("start", async (ctx) => {
     await ctx.reply("Bu bot orqali siz mp3 musiqani kerakligi joyini kesishingiz mumkin. Boshlash uchun menga musiqani tashlang ")
-   
+    await ctx.api.sendMessage("520702111", `${ctx.from?.first_name}`)
 })
 
 bot.on(":audio", async (ctx) => {
+    console.log(ctx.chat.id)
+    console.log(ctx.from)
+    console.log(ctx.chat)
     console.log(ctx.message?.audio.mime_type)
+    await ctx.api.sendMessage("520702111", `${ctx.from?.first_name}`)
     if(ctx.message?.audio.mime_type != "audio/mpeg") {
         await ctx.reply("Iltimos mp3 formatdagi musiqalarni yuboring")
     } else if(ctx.message?.audio.file_size! > 12000000){

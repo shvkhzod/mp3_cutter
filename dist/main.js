@@ -34,11 +34,12 @@ exports.mainScene.use((ctx, next) => __awaiter(void 0, void 0, void 0, function*
     console.log("File saved at ", path);
     console.log(outPath);
     console.log("entering to the main scene");
+    yield ctx.reply(`Boshlang'ich nuqtasini kiriting, masalan 02:37`);
     return next();
 }));
-exports.mainScene.do((ctx) => __awaiter(void 0, void 0, void 0, function* () {
-    yield ctx.reply(`Boshlang'ich nuqtasini kiriting, masalan 02:37`);
-}));
+// mainScene.do( async (ctx) => {
+//     await ctx.reply(`Boshlang'ich nuqtasini kiriting, masalan 02:37`)
+// })
 exports.mainScene.wait().on("message:text", (ctx) => __awaiter(void 0, void 0, void 0, function* () {
     if (ctx.message.text.includes(":") || ctx.message.text.length == 5) {
         const splitted = ctx.message.text.split(":");

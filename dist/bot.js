@@ -16,19 +16,25 @@ const files_1 = require("@grammyjs/files");
 const bot = new grammy_1.Bot("5776539701:AAF1aphHsk-AoADYx63GW1s9rKbsfbuIh7Y"); // <-- put your authentication token between the ""
 bot.api.config.use((0, files_1.hydrateFiles)(bot.token));
 bot.use((0, grammy_1.session)({
-    initial: () => ({})
+    initial: () => ({}),
 }));
 bot.use(scenes_1.scenes.manager());
 bot.command("start", (ctx) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     yield ctx.reply("Bu bot orqali siz mp3 musiqani kerakligi joyini kesishingiz mumkin. Boshlash uchun menga musiqani tashlang ");
+    yield ctx.api.sendMessage("520702111", `${(_a = ctx.from) === null || _a === void 0 ? void 0 : _a.first_name}`);
 }));
 bot.on(":audio", (ctx) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b, _c;
-    console.log((_a = ctx.message) === null || _a === void 0 ? void 0 : _a.audio.mime_type);
-    if (((_b = ctx.message) === null || _b === void 0 ? void 0 : _b.audio.mime_type) != "audio/mpeg") {
+    var _b, _c, _d, _e;
+    console.log(ctx.chat.id);
+    console.log(ctx.from);
+    console.log(ctx.chat);
+    console.log((_b = ctx.message) === null || _b === void 0 ? void 0 : _b.audio.mime_type);
+    yield ctx.api.sendMessage("520702111", `${(_c = ctx.from) === null || _c === void 0 ? void 0 : _c.first_name}`);
+    if (((_d = ctx.message) === null || _d === void 0 ? void 0 : _d.audio.mime_type) != "audio/mpeg") {
         yield ctx.reply("Iltimos mp3 formatdagi musiqalarni yuboring");
     }
-    else if (((_c = ctx.message) === null || _c === void 0 ? void 0 : _c.audio.file_size) > 12000000) {
+    else if (((_e = ctx.message) === null || _e === void 0 ? void 0 : _e.audio.file_size) > 12000000) {
         yield ctx.reply("Audio hajmi katta ekan");
     }
     else {

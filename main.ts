@@ -14,6 +14,8 @@ export const mainScene = new Scene<BotContext>("main")
     var endPoint = 0
     var theMusic:Audio;
     var outPath = ""
+
+    
 mainScene.use(async(ctx, next)=> {
     theMusic = ctx.msg?.audio!
     const fileId = theMusic?.file_id
